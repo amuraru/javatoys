@@ -5,6 +5,7 @@ Question?
     Instead of returning a boolean result from a method call,
     what if we throw a stackless, pre-created exception ?
 
+
 Benchmark:
     https://github.com/amuraru/javatoys/blob/master/benchmarks/bench/MyBenchmarks.java
 
