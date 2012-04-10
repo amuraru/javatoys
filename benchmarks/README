@@ -1,0 +1,22 @@
+What is the overhead associated with java exceptions?
+
+
+Question?
+    Instead of returning a boolean result from a method call,
+    what if we throw a stackless, pre-created exception ?
+
+Benchmark:
+    https://github.com/amuraru/javatoys/blob/master/benchmarks/bench/MyBenchmarks.java
+
+Results:
+    Scenario{vm=java, trial=0, benchmark=ReturnBool, size=10} 11.60 ns; σ=0.62 ns @ 10 trials
+    Scenario{vm=java, trial=0, benchmark=ThrowException, size=10} 10.84 ns; σ=0.08 ns @ 3 trials
+
+    Scenario{vm=java, trial=0, benchmark=ReturnBool, size=100} 122.43 ns; σ=6.44 ns @ 10 trials
+    Scenario{vm=java, trial=0, benchmark=ThrowException, size=100} 87.66 ns; σ=3.67 ns @ 10 trials
+
+    Scenario{vm=java, trial=0, benchmark=ReturnBool, size=1000} 1153.88 ns; σ=104.33 ns @ 10 trials
+    Scenario{vm=java, trial=0, benchmark=ThrowException, size=1000} 519.38 ns; σ=2.31 ns @ 3 trials
+
+    Scenario{vm=java, trial=0, benchmark=ReturnBool, size=10000} 11350.08 ns; σ=898.74 ns @ 10 trials
+    Scenario{vm=java, trial=0, benchmark=ThrowException, size=10000} 5080.01 ns; σ=23.27 ns @ 3 trials
