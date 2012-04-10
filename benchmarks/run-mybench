@@ -1,5 +1,27 @@
-alias ccaliper='java -cp /data/projects/caliper/caliper/target/caliper-1.0-SNAPSHOT.jar:/data/projects/caliper/caliper/target/dependency/*:/data/projects/caliper com.google.caliper.Runner'
-ccaliper -Dsize=10,100,1000    bench.MyBenchmarks.ReturnBool
-ccaliper -Dsize=10,100,1000    bench.MyBenchmarks.ThrowException
+#!/bin/bash
+
+this="$0"
+while [ -h "$this" ]; do
+  ls=`ls -ld "$this"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '.*/.*' > /dev/null; then
+    this="$link"
+  else
+    this=`dirname "$this"`/"$link"
+  fi
+done
+
+# convert relative path to absolute path
+dir=`dirname "$this"`
+dir=`cd "$dir" && pwd`
+
+
+export CLASSPATH="${dir}/caliper/caliper/target/caliper-1.0-SNAPSHOT.jar:${dir}/caliper/caliper/target/dependency/*:${dir}"
+echo $CLASSPATH
+
+alias caliper='java com.google.caliper.Runner'
+
+caliper -Dsize=10,100,1000  bench.MyBenchmarks.ReturnBool
+caliper -Dsize=10,100,1000  bench.MyBenchmarks.ThrowException
 
 
