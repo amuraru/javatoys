@@ -1,0 +1,5 @@
+alias ccaliper='java -cp /data/projects/caliper/caliper/target/caliper-1.0-SNAPSHOT.jar:/data/projects/caliper/caliper/target/dependency/*:/data/projects/caliper com.google.caliper.Runner'
+ccaliper -Dsize=10,100,1000    bench.MyBenchmarks.ReturnBool
+ccaliper -Dsize=10,100,1000    bench.MyBenchmarks.ThrowException
+
+
